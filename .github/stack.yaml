@@ -1,0 +1,71 @@
+# stack.yaml
+# Author: Burt Harris
+# Purpose: Declarative spec for a GitHub template project scaffold.
+# - Feed this file to Copilot to generate a SvelteKit-based starter with the chosen tools.
+# - Includes your explicit choices (PicoCSS, REST API, Clerk) and leaves other options open.
+
+project:
+  name: sveltekit-template
+  description: Starter template for a modern SvelteKit app with Clerk auth and PicoCSS
+  author: Burt Harris
+
+github:
+  template: true  # Mark this repo as a reusable template
+  actions: TBD    # e.g., CI workflows (lint, test, deploy)
+
+stack:
+  builder: SvelteKit
+  frontend:
+    framework: SvelteKit
+    language: TypeScript
+    styling: PicoCSS
+    routing: file-based
+    state_management: built-in
+    testing: TBD          # e.g., Vitest, Playwright
+  backend:
+    adapter: Node
+    api: REST
+    auth: Clerk
+    database: TBD         # e.g., DuckDB, Polars, UnJS/db0, SQLite
+    orm: TBD              # e.g., Prisma, Drizzle
+
+auth:
+  provider: Clerk
+  passkeys: true
+  env:
+    publishable_key: CLERK_PUBLISHABLE_KEY
+    secret_key: CLERK_SECRET_KEY
+  routes:
+    sign_in: /sign-in
+    sign_up: /sign-up
+    callback: /sso-callback
+
+tools:
+  dev_server: Vite
+  package_manager: pnpm
+  linting: ESLint
+  formatting: Prettier
+  env: dotenv
+
+modules:
+  - consola     # Logging utility (by UnJS)
+  - std-env     # Environment/runtime detection (by UnJS)
+  - unenv       # Runtime-agnostic Node polyfills (by UnJS)
+  - unstorage   # Unified key-value storage (by UnJS)
+
+deployment:
+  platform: Vercel
+  tier: Hobby
+  supports:
+    - Node.js serverless functions
+    - SvelteKit SSR
+    - Environment variables
+    - Edge functions
+
+features:
+  - SSR
+  - Static site generation
+  - API routes
+  - Form handling
+  - Authentication (Passkeys via Clerk)
+  - Modular architecture

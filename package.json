@@ -1,0 +1,30 @@
+{
+  "name": "create-guild-sv",
+  "version": "1.0.0",
+  "description": "An npm create-compatible SvelteKit template (guild-sv) with Clerk auth and PicoCSS.",
+  "author": "Burt Harris",
+  "license": "MIT",
+  "keywords": ["sveltekit", "template", "create", "starter", "clerk", "picocss"],
+  "exports": {
+    ".": "./"
+  },
+  "files": ["template"],
+  "main": "template/index.js",
+  "bin": {
+    "create-guild-sv": "template/index.js"
+  },
+  "scripts": {
+    "test": "echo 'No tests specified'"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/burtharris/guild-sv.git"
+  },
+  "bugs": {
+    "url": "https://github.com/burtharris/guild-sv/issues"
+  },
+  "homepage": "https://github.com/burtharris/guild-sv#readme"
+}
